@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.content = data;
       },
       err => {

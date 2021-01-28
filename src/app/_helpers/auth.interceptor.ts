@@ -20,12 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
       // for Spring Boot back-end
       const token2 = 'Bearer ' + token;
       authReq = req.clone({headers: req.headers.append(TOKEN_HEADER_KEY, token2)});
-
-
-      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      console.log(authReq.headers.get(TOKEN_HEADER_KEY));
-      // for Node.js Express back-end
-      // authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
       return next.handle(authReq);
     }
     return next.handle(authReq);

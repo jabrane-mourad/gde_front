@@ -11,8 +11,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
-    console.log('hana');
-    console.log(this.http.get(API_URL + 'all'));
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
 

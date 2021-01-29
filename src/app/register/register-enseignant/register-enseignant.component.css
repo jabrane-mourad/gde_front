@@ -1,0 +1,36 @@
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  padding: 40px 40px;
+}
+
+.card {
+  width: 550px;
+  background-color: #f7f7f7;
+  margin-top: 50px;
+
+}
+
+.profile-img-card {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+[nz-form] {
+  max-width: 600px;
+}
+
+.phone-select {
+  width: 70px;
+}
+
+.register-are {
+  margin-bottom: 8px;
+}

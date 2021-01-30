@@ -150,37 +150,32 @@
   </li>
 </ul>
 
+
+
+
+
+
+
 <ul nz-menu nzMode="inline" *ngIf="showSideBarEtudiant">
   <li nz-submenu  nzTitle="Tableau de bord et" nzIcon="dashboard">
     <ul>
       <li nz-submenu nzOpen nzTitle="Cours" nzIcon="book">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">List des cours</a>
-          </li>
-        </ul>
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Ajouter cours</a>
-          </li>
-        </ul>
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Rechercher cours</a>
+            <a routerLink="/CoursEtudiant">List des cours</a>
           </li>
         </ul>
       </li>
 
-
       <li nz-submenu nzOpen nzTitle="Statistique" nzIcon="pie-chart">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Statistique des notes</a>
+            <a routerLink="/NotesEtudiant">Statistique des notes</a>
           </li>
         </ul>
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Statistique des absences</a>
+            <a routerLink="/AbsencesEtudiant">Statistique des absences</a>
           </li>
         </ul>
       </li>
@@ -189,22 +184,12 @@
       <li nz-submenu nzOpen nzTitle="Demandes" nzIcon="diff">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">list des Demandes</a>
+            <a routerLink="/ListDemandeEtudiant">Mes Demandes</a>
           </li>
         </ul>
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Demandes acceptée</a>
-          </li>
-        </ul>
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Demandes rejetée</a>
-          </li>
-        </ul>
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">Statistique des demandes</a>
+            <a routerLink="FaireDemandeEtudiant">Nouveau demande</a>
           </li>
         </ul>
       </li>
@@ -212,16 +197,10 @@
       <li nz-submenu nzOpen nzTitle="Emplois du temps" nzIcon="field-time">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">premier semestre</a>
-          </li>
-        </ul>
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="#">deuxième semestre</a>
+            <a routerLink="/EmploisEtudiant">Emplois du temps"</a>
           </li>
         </ul>
       </li>
-
     </ul>
   </li>
 </ul>

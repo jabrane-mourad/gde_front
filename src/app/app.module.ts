@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,6 +30,12 @@ import {
 import { RegisterEtudiantComponent } from './register/register-etudiant/register-etudiant.component';
 import { NzOptionComponent, NzSelectModule } from 'ng-zorro-antd/select';
 import { RegisterEnseignantComponent } from './register/register-enseignant/register-enseignant.component';
+import { CoursEtudiantComponent } from './etudiant/cours-etudiant/cours-etudiant.component';
+import { NotesEtudiantComponent } from './etudiant/notes-etudiant/notes-etudiant.component';
+import { AbsencesEtudiantComponent } from './etudiant/absences-etudiant/absences-etudiant.component';
+import { ListDemandeEtudiantComponent } from './etudiant/list-demande-etudiant/list-demande-etudiant.component';
+import { FaireDemandeEtudiantComponent } from './etudiant/faire-demande-etudiant/faire-demande-etudiant.component';
+import { EmploisEtudiantComponent } from './etudiant/emplois-etudiant/emplois-etudiant.component';
 
 registerLocaleData(en);
 
@@ -41,12 +46,17 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    BoardUserComponent,
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
     RegisterEtudiantComponent,
     RegisterEnseignantComponent,
+    CoursEtudiantComponent,
+    NotesEtudiantComponent,
+    AbsencesEtudiantComponent,
+    ListDemandeEtudiantComponent,
+    FaireDemandeEtudiantComponent,
+    EmploisEtudiantComponent,
   ],
   imports: [
     BrowserModule,

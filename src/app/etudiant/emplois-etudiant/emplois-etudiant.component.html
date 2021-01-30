@@ -1,0 +1,18 @@
+<p>emplois-etudiant works!</p>
+
+
+<form>
+  <div class="form-group">
+    <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
+      <nz-option nzValue="s1" nzLabel="Semestre 1"></nz-option>
+      <nz-option nzValue="s2" nzLabel="Semestre 2"></nz-option>
+    </nz-select>
+  </div>
+</form>
+
+<!--
+<iframe [src]="emploi" width="640" height="480"></iframe>
+-->
+
+
+<iframe class="e2e-iframe-untrusted-src" width="640" height="390" [src]="emplois"></iframe>

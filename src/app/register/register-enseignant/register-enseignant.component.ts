@@ -35,7 +35,6 @@ export class RegisterEnseignantComponent implements OnInit {
     const type = 'Etudiant';
     this.registerService.registerEnseignant(type, nom, prenom, dateNaissance, email, numeroSom, password).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },

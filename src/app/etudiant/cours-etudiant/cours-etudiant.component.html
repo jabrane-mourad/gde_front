@@ -1,0 +1,36 @@
+<div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
+
+  <form>
+    <div class="form-group">
+      <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
+        <nz-option nzValue="s1" nzLabel="Semestre S1"></nz-option>
+        <nz-option nzValue="s2" nzLabel="Semestre S2"></nz-option>
+      </nz-select>
+    </div>
+  </form>
+
+
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nom du module</th>
+      <th scope="col">Enseignant du module</th>
+      <th scope="col">Support de cours</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let column of listModule">
+      <th scope="row">1</th>
+      <td>{{column.nom}}</td>
+      <td>{{column.enseignant.nom}}</td>
+      <td><a href="{{column.source}}" target="_blank">suppot pdf</a></td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+</div>

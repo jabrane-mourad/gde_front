@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.jwttoken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.reloadPage();

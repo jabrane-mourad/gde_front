@@ -8,7 +8,7 @@ import {TokenStorageService} from './_services/token-storage.service';
 })
 export class AppComponent implements OnInit {
   isLoggedIn = false;
-  username?: string;
+  username = '';
   private roles: string[] = [];
 
   constructor(private tokenStorageService: TokenStorageService) {
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-      this.username = user.username;
+      this.username = user.utilisateur.nom + ' ' + user.utilisateur.prenom;
     }
   }
 

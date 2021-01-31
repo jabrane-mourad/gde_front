@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RegisterService} from '../../_services/register.service';
 
 @Component({
@@ -32,8 +32,9 @@ export class RegisterEnseignantComponent implements OnInit {
       numeroSom,
       password,
     } = this.form;
-    const type = 'Etudiant';
-    this.registerService.registerEnseignant(type, nom, prenom, dateNaissance, email, numeroSom, password).subscribe(
+    const type = 'Enseignant';
+    const role = 'ROLE_ENSEIGNANT';
+    this.registerService.registerEnseignant(type, nom, prenom, dateNaissance, email, numeroSom, password, role).subscribe(
       data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;

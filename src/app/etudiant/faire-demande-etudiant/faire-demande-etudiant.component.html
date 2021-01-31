@@ -1,1 +1,40 @@
-<p>faire-demande-etudiant works!</p>
+<div class="col-md-12">
+  <div class="card card-container">
+    <h2>Demande un service</h2>
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+
+      <div class="form-group">
+        <label>Type de service</label>
+        <nz-select [(ngModel)]="form.typeDemande" name="typeDemande">
+          <nz-option nzValue="Convention" nzLabel="Convention"></nz-option>
+          <nz-option nzValue="ReleveDesNotes" nzLabel="Releve des notes"></nz-option>
+          <nz-option nzValue="RetirerDiplome" nzLabel="Retirer un diplome"></nz-option>
+        </nz-select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Pourqoui :</label>
+        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="form.description" required maxlength="20"
+               #description="ngModel"/>
+        <div class="alert-danger" *ngIf="description.errors && f.submitted">
+          <div *ngIf="description.errors.required">description is required</div>
+          <div *ngIf="description.errors.maxlength">description must be at most 20 characters</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">valider</button>
+      </div>
+      <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+        demande erreur!<br/>{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      demande envoyée
+    </div>
+  </div>
+</div>

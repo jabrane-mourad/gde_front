@@ -1,1 +1,29 @@
-<p>list-demande-etudiant works!</p>
+<div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
+
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Demande</th>
+      <th scope="col">Description</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Justification</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let column of listDemande">
+      <th scope="row">1</th>
+      <td>{{column.typeDemande}}</td>
+      <td>{{column.description}}</td>
+      <td>{{column.etat}}</td>
+      <td>{{column.justification}}</td>
+      <td><button (click)="deleteDemande(column.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Delete</i></button></td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+</div>

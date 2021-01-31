@@ -1,1 +1,23 @@
-<p>notes-etudiant works!</p>
+<div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nom du module</th>
+      <th scope="col">note</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let column of listNotes">
+      <th scope="row">1</th>
+      <td>{{column.module.nom}}</td>
+      <td>{{column.valeur}} / 20</td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+</div>

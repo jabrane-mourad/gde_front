@@ -1,15 +1,14 @@
-<div class="col-md-12" style="padding-left: 800px">
+<div class="col-md-12" >
   <div class="card card-container">
     <img
       id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      src="./assets/img/student.png"
       class="profile-img-card"
     />
     <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
       <div class="form-group">
-        <label for="nom">nom</label>
-        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required="3" maxlength="20"
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required maxlength="20"
                #nom="ngModel"/>
         <div class="alert-danger" *ngIf="nom.errors && f.submitted">
           <div *ngIf="nom.errors.required">nom is required</div>
@@ -18,10 +17,9 @@
         </div>
       </div>
 
-
       <div class="form-group">
-        <label for="prenom">prenom</label>
-        <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required="3"
+        <label for="prenom">Prenom</label>
+        <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required
                maxlength="20"
                #prenom="ngModel"/>
         <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
@@ -31,16 +29,17 @@
         </div>
       </div>
 
-
       <div class="form-group">
-        <label for="dateNaissance">dateNaissance</label>
-        <input type="date"  datetime="yyyy-MM-dd" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="form.dateNaissance"
-               #dateNaissance="ngModel"/>
+        <label for="dateNaissance">Date de naissance</label>
+        <input type="date"  datetime="yyyy-MM-dd" class="form-control" id="dateNaissance" name="dateNaissance"
+               [(ngModel)]="form.dateNaissance"
+               #dateNaissance="ngModel"
+               required
+               max="2013-12-31" />
         <div class="alert-danger" *ngIf="dateNaissance.errors && f.submitted">
-          <div *ngIf="dateNaissance.errors.required">dateNaissance is required</div>
+          <div *ngIf="dateNaissance.errors">date de naissance is required</div>
         </div>
       </div>
-
 
       <div class="form-group">
         <label for="email">Email</label>
@@ -54,11 +53,10 @@
         </div>
       </div>
 
-
       <div class="form-group">
-        <label for="codeMasar">codeMasar</label>
+        <label for="codeMasar">Code masar</label>
         <input type="text" class="form-control" id="codeMasar" name="codeMasar" [(ngModel)]="form.codeMasar"
-               required="3" maxlength="20"
+               required maxlength="20"
                #codeMasar="ngModel"/>
         <div class="alert-danger" *ngIf="codeMasar.errors && f.submitted">
           <div *ngIf="codeMasar.errors.required">codeMasar is required</div>
@@ -68,6 +66,7 @@
       </div>
 
       <div class="form-group">
+        <label for="codeMasar">Niveau</label>
         <nz-select [(ngModel)]="form.niveau" name="niveau">
           <nz-option nzValue="premierAnnee" nzLabel="Premier annee"></nz-option>
           <nz-option nzValue="deuxiemeAnnee" nzLabel="Deuxieme annee"></nz-option>
@@ -77,19 +76,29 @@
         </nz-select>
       </div>
 
+      <div class="form-group">
+        <label >filiere</label>
+        <nz-select [(ngModel)]="form.filiere" name="filiere">
+          <nz-option nzValue="CP" nzLabel="Cycle préparatoire"></nz-option>
+          <nz-option nzValue="GL" nzLabel="Génie logiciel"></nz-option>
+          <nz-option nzValue="GIID" nzLabel="Ingénierie des Données"></nz-option>
+          <nz-option nzValue="GRT" nzLabel="Génie Réseaux et Télécoms"></nz-option>
+          <nz-option nzValue="GP" nzLabel="Génie des Procédés"></nz-option>
+          <nz-option nzValue="GE" nzLabel="Génie Electrique"></nz-option>
+        </nz-select>
+      </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Mot de pass</label>
         <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required
                minlength="6" #password="ngModel"/>
         <div class="alert-danger" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Mot de pass is required</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            Mot de pass must be at least 6 characters
           </div>
         </div>
       </div>
-
 
       <div class="form-group">
         <button class="btn btn-primary btn-block">Sign Up</button>

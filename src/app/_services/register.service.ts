@@ -16,7 +16,7 @@ export class RegisterService {
   }
 
   registerEtudiant(type: string, nom: string, prenom: string, dateNaissance: string, email: string,
-                   codeMasar: string, niveau: string, password: string): Observable<any> {
+                   codeMasar: string, niveau: string, password: string, role: string,filiere:string): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       type,
       nom,
@@ -25,12 +25,14 @@ export class RegisterService {
       email,
       codeMasar,
       niveau,
-      password
+      password,
+      role,
+      filiere
     }, httpOptions);
   }
 
   registerEnseignant(type: string, nom: string, prenom: string, dateNaissance: string, email: string,
-                     numeroSom: string, password: string): Observable<any> {
+                     numeroSom: string, password: string, role: string): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       type,
       nom,
@@ -38,7 +40,8 @@ export class RegisterService {
       dateNaissance,
       email,
       numeroSom,
-      password
+      password,
+      role
     }, httpOptions);
   }
 }

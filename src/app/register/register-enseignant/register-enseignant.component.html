@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="col-md-12" style="padding-left: 800px">
+  <div class="col-md-12" >
     <div class="card card-container">
       <img
         id="profile-img"
@@ -9,8 +9,8 @@
       <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
         <div class="form-group">
-          <label for="nom">nom</label>
-          <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required="3" maxlength="20"
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required maxlength="20"
                  #nom="ngModel"/>
           <div class="alert-danger" *ngIf="nom.errors && f.submitted">
             <div *ngIf="nom.errors.required">nom is required</div>
@@ -22,7 +22,7 @@
 
         <div class="form-group">
           <label for="prenom">prenom</label>
-          <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required="3"
+          <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="form.prenom" required
                  maxlength="20"
                  #prenom="ngModel"/>
           <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
@@ -34,11 +34,14 @@
 
 
         <div class="form-group">
-          <label for="dateNaissance">dateNaissance</label>
-          <input type="date"  datetime="yyyy-MM-dd" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="form.dateNaissance"
-                 #dateNaissance="ngModel"/>
+          <label for="dateNaissance">Date de naissance</label>
+          <input type="date"  datetime="yyyy-MM-dd" class="form-control" id="dateNaissance" name="dateNaissance"
+                 [(ngModel)]="form.dateNaissance"
+                 #dateNaissance="ngModel"
+                 required
+                 max="2021-01-01" />
           <div class="alert-danger" *ngIf="dateNaissance.errors && f.submitted">
-            <div *ngIf="dateNaissance.errors.required">dateNaissance is required</div>
+            <div *ngIf="dateNaissance.errors">date de naissance is required</div>
           </div>
         </div>
 
@@ -57,9 +60,9 @@
 
 
         <div class="form-group">
-          <label for="numeroSom">numeroSom</label>
+          <label for="numeroSom">numero de som</label>
           <input type="text" class="form-control" id="numeroSom" name="numeroSom" [(ngModel)]="form.numeroSom"
-                 required="3" maxlength="20"
+                 required maxlength="20"
                  #numeroSom="ngModel"/>
           <div class="alert-danger" *ngIf="numeroSom.errors && f.submitted">
             <div *ngIf="numeroSom.errors.required">numeroSom is required</div>
@@ -68,17 +71,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Mot de pass</label>
           <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required
                  minlength="6" #password="ngModel"/>
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.required">Mot de pass is required</div>
             <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
+              Mot de pass must be at least 6 characters
             </div>
           </div>
         </div>
-
 
         <div class="form-group">
           <button class="btn btn-primary btn-block">Sign Up</button>

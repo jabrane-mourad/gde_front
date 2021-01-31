@@ -14,6 +14,7 @@ export class RegisterEtudiantComponent implements OnInit {
     email: null,
     codeMasar: null,
     niveau: 'premierAnnee',
+    filiere: 'CP',
     password: null,
   };
   isSuccessful = false;
@@ -32,10 +33,12 @@ export class RegisterEtudiantComponent implements OnInit {
       email,
       codeMasar,
       niveau,
+      filiere,
       password,
     } = this.form;
     const type = 'Etudiant';
-    this.registerService.registerEtudiant(type, nom, prenom, dateNaissance, email, codeMasar, niveau, password).subscribe(
+    const role = 'ROLE_ETUDIANT';
+    this.registerService.registerEtudiant(type, nom, prenom, dateNaissance, email, codeMasar, niveau, password, role, filiere).subscribe(
       data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;

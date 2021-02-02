@@ -29,11 +29,10 @@ export class CoursEtudiantComponent implements OnInit {
   public getModules(): void {
 
     this.api = this.apiMoules + 'nom=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
-    console.log(this.apiMoules);
+    console.log(this.api);
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
         this.listModule = data.modules;
-        console.log(this.apiMoules);
       }, error => {
         console.log(error);
       }

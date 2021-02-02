@@ -11,6 +11,8 @@ import {EmploisEtudiantComponent} from './etudiant/emplois-etudiant/emplois-etud
 import {FaireDemandeEtudiantComponent} from './etudiant/faire-demande-etudiant/faire-demande-etudiant.component';
 import {ListDemandeEtudiantComponent} from './etudiant/list-demande-etudiant/list-demande-etudiant.component';
 import {NotesEtudiantComponent} from './etudiant/notes-etudiant/notes-etudiant.component';
+import {UploadFilesComponent} from './administrateur/upload-files/upload-files.component';
+import {TraiterDemandeComponent} from './administrateur/traiter-demande/traiter-demande.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path: 'FaireDemandeEtudiant', component: FaireDemandeEtudiantComponent},
   {path: 'ListDemandeEtudiant', component: ListDemandeEtudiantComponent},
   {path: 'NotesEtudiant', component: NotesEtudiantComponent},
+  {path: 'addCours', component: UploadFilesComponent},
+  {path: 'TraiterDemande', component: TraiterDemandeComponent},
 
 
   {path: '', redirectTo: 'home', pathMatch: 'full'},

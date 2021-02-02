@@ -1,0 +1,43 @@
+<div class="container container-fluid">
+  <div *ngIf="currentFile" class="progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }"
+    >
+      {{ progress }}%
+    </div>
+  </div>
+
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" />
+  </label>
+  <label for="nom">Nom</label>
+  <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="xj" required maxlength="20"
+         #nom="ngModel"/>
+
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+  </button>
+
+  <div class="alert alert-light" role="alert">{{ message }}</div>
+
+
+  <div class="card">
+    <div class="card-header">List of Files</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
+      <li class="list-group-item">
+        <a href="{{ file.url }}">{{ file.name }}</a>
+        <td><button (click)="viewCours(file.url)" class='btn btn-primary'><i class="fa fa-futboll-0">Accepter</i></button></td>
+      </li>
+
+    </ul>
+  </div>
+  <div>
+    <pdf-viewer [src]="srcView" [original-size]="false"></pdf-viewer>
+
+  </div>
+</div>

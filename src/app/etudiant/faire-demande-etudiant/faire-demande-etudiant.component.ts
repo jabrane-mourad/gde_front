@@ -9,7 +9,7 @@ import {TokenStorageService} from '../../_services/token-storage.service';
   styleUrls: ['./faire-demande-etudiant.component.css']
 })
 export class FaireDemandeEtudiantComponent implements OnInit {
-  API = 'http://localhost:8080/etudiants/modules';
+  API = 'http://localhost:8080/etudiants/demandes';
   form: any = {
     typeDemande: 'ReleveDesNotes',
     description: null

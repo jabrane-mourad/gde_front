@@ -1,1 +1,21 @@
-<p>absences-etudiant works!</p>
+<div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom du module</th>
+      <th scope="col">nombre des heures</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let column of listabsences">
+      <td>{{column.module.nom}}</td>
+      <td>{{column.nbrHeureAbs}} H</td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+</div>

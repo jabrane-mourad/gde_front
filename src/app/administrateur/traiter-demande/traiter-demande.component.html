@@ -1,0 +1,47 @@
+<div class="container" style="padding: 10px">
+  <form>
+    <div class="form-group">
+      <nz-select [(ngModel)]="typeDemande" name="semestre" (ngModelChange)="getDemandes()">
+
+        <nz-option nzValue="Convention" nzLabel="Convention"></nz-option>
+        <nz-option nzValue="ReleveDesNotes" nzLabel="Releve des notes"></nz-option>
+        <nz-option nzValue="RetirerDiplome" nzLabel="Retirer un diplome"></nz-option>
+      </nz-select>
+
+      <nz-select [(ngModel)]="etatDemande" name="etatDemande" (ngModelChange)="getDemandes()">
+        <nz-option nzValue="attente" nzLabel="attente"></nz-option>
+        <nz-option nzValue="rejetée" nzLabel="rejetée"></nz-option>
+        <nz-option nzValue="accepter" nzLabel="accepter"></nz-option>
+      </nz-select>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">nom , prenom</th>
+      <th scope="col">code masar</th>
+      <th scope="col">type demande</th>
+      <th scope="col">Description</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor = "let column of listDemande">
+        <th scope="row">1</th>
+        <td>{{column.etudiant.nom}}</td>
+        <td>{{column.description}}</td>
+        <td>{{column.typeDemande}}</td>
+        <td>{{column.etat}}</td>
+        <td>{{column.justification}}</td>
+        <td><button (click)="accepter(column.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Accepter</i></button></td>
+        <td><button (click)="refuser(column.id)" class='btn btn-danger'><i class="fa fa-futboll-0">Refuser</i></button></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>

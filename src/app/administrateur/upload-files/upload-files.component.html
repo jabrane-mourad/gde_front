@@ -1,4 +1,65 @@
-<div class="container container-fluid">
+<div>
+  <div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
+
+    <form>
+      <div class="form-group">
+        <label >Semestre : </label>
+        <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
+          <nz-option nzValue="s1" nzLabel="S1"></nz-option>
+          <nz-option nzValue="s2" nzLabel="S2"></nz-option>
+        </nz-select>
+
+        <label >Niveau : </label>
+        <nz-select [(ngModel)]="niveau" name="niveau" (ngModelChange)="getModules()">
+          <nz-option nzValue="premierAnnee" nzLabel="Premier annee"></nz-option>
+          <nz-option nzValue="deuxiemeAnnee" nzLabel="Deuxieme annee"></nz-option>
+          <nz-option nzValue="troisiemeAnnee" nzLabel="Troisieme annee"></nz-option>
+          <nz-option nzValue="quatriemeAnnee" nzLabel="Quatrieme annee"></nz-option>
+          <nz-option nzValue="cinquiemeAnnee" nzLabel="Cinquieme annee"></nz-option>
+        </nz-select>
+        <label >Filiere : </label>
+        <nz-select [(ngModel)]="filiere" name="filiere" (ngModelChange)="getModules()">
+          <nz-option nzValue="CP" nzLabel="Cycle préparatoire"></nz-option>
+          <nz-option nzValue="GL" nzLabel="Génie logiciel"></nz-option>
+          <nz-option nzValue="GIID" nzLabel="Ingénierie des Données"></nz-option>
+          <nz-option nzValue="GRT" nzLabel="Génie Réseaux et Télécoms"></nz-option>
+          <nz-option nzValue="GP" nzLabel="Génie des Procédés"></nz-option>
+          <nz-option nzValue="GE" nzLabel="Génie Electrique"></nz-option>
+        </nz-select>
+
+      </div>
+    </form>
+
+
+
+    <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nom du module</th>
+        <th scope="col">Enseignant du module</th>
+        <th scope="col">option</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor = "let column of listModule">
+        <th scope="row">1</th>
+        <td>{{column.nom}}</td>
+        <td>{{column.enseignant.nom}}</td>
+        <td><a href="{{column.source}}" target="_blank">{{column.cleCours}}</a></td>
+        <td><button (click)="ajouterCours(column.id)" class='btn btn-primary'><i class="fa fa-futboll-0">ajouter cours</i></button></td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<div class="container" style="display: {{displayUpload}}">
   <div *ngIf="currentFile" class="progress">
     <div
       class="progress-bar progress-bar-info progress-bar-striped"
@@ -6,19 +67,21 @@
       attr.aria-valuenow="{{ progress }}"
       aria-valuemin="0"
       aria-valuemax="100"
-      [ngStyle]="{ width: progress + '%' }"
-    >
+      [ngStyle]="{ width: progress + '%' }">
       {{ progress }}%
     </div>
   </div>
-
+<div>
   <label class="btn btn-default">
     <input type="file" (change)="selectFile($event)" />
   </label>
-  <label for="nom">Nom</label>
-  <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="xj" required maxlength="20"
-         #nom="ngModel"/>
+</div>
 
+
+  <div>
+    <label for="nom">mot cle de cours</label>
+    <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="motCle" required maxlength="20" #nom="ngModel"/>
+  </div>
   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
     Upload
   </button>
@@ -26,7 +89,7 @@
   <div class="alert alert-light" role="alert">{{ message }}</div>
 
 
-  <div class="card">
+<!--  <div class="card">
     <div class="card-header">List of Files</div>
     <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
       <li class="list-group-item">
@@ -35,9 +98,9 @@
       </li>
 
     </ul>
-  </div>
-  <div>
-    <pdf-viewer [src]="srcView" [original-size]="false"></pdf-viewer>
+  </div>-->
 
-  </div>
+<!--  <div>
+    <pdf-viewer [src]="srcView" [original-size]="false"></pdf-viewer>
+  </div>-->
 </div>

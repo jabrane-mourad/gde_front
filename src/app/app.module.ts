@@ -34,8 +34,7 @@ import {FaireDemandeEtudiantComponent} from './etudiant/faire-demande-etudiant/f
 import {EmploisEtudiantComponent} from './etudiant/emplois-etudiant/emplois-etudiant.component';
 import {UploadFilesComponent} from './administrateur/upload-files/upload-files.component';
 import {TraiterDemandeComponent} from './administrateur/traiter-demande/traiter-demande.component';
-
-import {PdfViewerModule} from 'ng2-pdf-viewer';
+import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 
 registerLocaleData(en);
 
@@ -72,7 +71,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzMenuModule,
     NzIconModule.forRoot(icons),
     NzSelectModule,
-    PdfViewerModule
+    NgxExtendedPdfViewerModule
   ],
   providers: [authInterceptorProviders, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

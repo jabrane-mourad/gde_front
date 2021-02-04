@@ -27,10 +27,12 @@
       <td>{{column.nom}}</td>
       <td>{{column.enseignant.nom}}</td>
       <td><a href="{{column.source}}" target="_blank">suppot pdf</a></td>
+      <td><button (click)="viewCours(column.source)" class='btn btn-primary'><i class="fa fa-futboll-0">Accepter</i></button></td>
     </tr>
 
 
     </tbody>
   </table>
 
+  <ngx-extended-pdf-viewer [src]="pdfSrc" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>
 </div>

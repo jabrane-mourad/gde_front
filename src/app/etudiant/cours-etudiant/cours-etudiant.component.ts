@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cours-etudiant',
@@ -14,8 +15,9 @@ export class CoursEtudiantComponent implements OnInit {
   niveau = '';
   filiere = '';
   public listModule: any;
+  pdfSrc = 'http://localhost:8080/files/xjtestoen.pdf';
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -37,5 +39,9 @@ export class CoursEtudiantComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  viewCours(url: string): void {
+    this.pdfSrc = url;
   }
 }

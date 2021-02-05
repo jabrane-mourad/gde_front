@@ -17,7 +17,8 @@
       <th scope="col"></th>
       <th scope="col">Nom du module</th>
       <th scope="col">Enseignant du module</th>
-      <th scope="col">Support de cours</th>
+      <th scope="col">telecharger</th>
+      <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -27,12 +28,14 @@
       <td>{{column.nom}}</td>
       <td>{{column.enseignant.nom}}</td>
       <td><a href="{{column.source}}" target="_blank">suppot pdf</a></td>
-      <td><button (click)="viewCours(column.source)" class='btn btn-primary'><i class="fa fa-futboll-0">Accepter</i></button></td>
+      <td><button (click)="viewCours(column.source)"><i nz-icon nzType="eye" nzTheme="outline"></i></button></td>
     </tr>
 
 
     </tbody>
   </table>
 
-  <ngx-extended-pdf-viewer [src]="pdfSrc" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>
+<div style="display: {{displayCours}}">
+  <ngx-extended-pdf-viewer [src]="pdfSrc" [useBrowserLocale]="useBrowserLocale" height="80vh"></ngx-extended-pdf-viewer>
+</div>
 </div>

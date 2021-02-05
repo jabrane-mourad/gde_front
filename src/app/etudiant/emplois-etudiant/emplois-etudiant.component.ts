@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/token-storage.service';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emplois-etudiant',
@@ -15,10 +14,10 @@ export class EmploisEtudiantComponent implements OnInit {
   semestre = 's1';
   niveau = '';
   filiere = '';
-  emploi = '';
-  emplois: SafeResourceUrl = '';
+  emplois = '';
+  useBrowserLocale = true;
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -34,9 +33,9 @@ export class EmploisEtudiantComponent implements OnInit {
     this.apiEmploi = this.api + 'semestre=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
     this.http.get(this.apiEmploi).subscribe(data => {
         // @ts-ignore
-        this.emploi = data.emploi.replace('view?usp=sharing', 'preview');
-        this.emplois = this.sanitizer.bypassSecurityTrustResourceUrl(this.emploi);
-        console.log(this.emploi);
+        this.emplois = data.emploi;
+        // this.emplois = this.sanitizer.bypassSecurityTrustResourceUrl(
+        // data.emploi.replace('view?usp=sharing', 'preview'));, private sanitizer: DomSanitizer
       }, error => {
         console.log(error);
       }

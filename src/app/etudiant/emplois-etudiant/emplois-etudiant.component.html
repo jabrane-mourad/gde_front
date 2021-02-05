@@ -1,4 +1,4 @@
-<div class="container" style="padding: 10px">
+<div class="container xjroot">
   <form>
     <div class="form-group">
       <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
@@ -8,6 +8,7 @@
     </div>
   </form>
 
-  <iframe class="e2e-iframe-untrusted-src" width="640" height="390" [src]="emplois"></iframe>
+  <ngx-extended-pdf-viewer [src]="emplois" [useBrowserLocale]="useBrowserLocale" height="80vh"></ngx-extended-pdf-viewer>
+
 
 </div>

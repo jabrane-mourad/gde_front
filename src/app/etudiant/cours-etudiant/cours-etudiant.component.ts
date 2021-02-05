@@ -15,7 +15,9 @@ export class CoursEtudiantComponent implements OnInit {
   niveau = '';
   filiere = '';
   public listModule: any;
-  pdfSrc = 'http://localhost:8080/files/xjtestoen.pdf';
+  pdfSrc = '';
+  useBrowserLocale = true;
+  displayCours = 'none';
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private sanitizer: DomSanitizer) {
   }
@@ -29,6 +31,7 @@ export class CoursEtudiantComponent implements OnInit {
   }
 
   public getModules(): void {
+    this.displayCours = 'none';
 
     this.api = this.apiMoules + 'nom=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
     console.log(this.api);
@@ -42,6 +45,7 @@ export class CoursEtudiantComponent implements OnInit {
   }
 
   viewCours(url: string): void {
+    this.displayCours = 'block';
     this.pdfSrc = url;
   }
 }

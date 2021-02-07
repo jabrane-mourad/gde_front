@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/token-storage.service';
 
@@ -30,6 +30,8 @@ export class NotesEtudiantComponent implements OnInit {
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
         this.listNotes = data;
+        console.log(this.api);
+        console.log(data);
       }, error => {
         console.log(error);
       }

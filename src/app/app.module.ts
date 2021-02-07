@@ -22,7 +22,7 @@ import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {IconDefinition} from '@ant-design/icons-angular';
-import {AccountBookFill, AlertFill, AlertOutline,} from '@ant-design/icons-angular/icons';
+import {AccountBookFill, AlertFill, AlertOutline} from '@ant-design/icons-angular/icons';
 import {RegisterEtudiantComponent} from './register/register-etudiant/register-etudiant.component';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {RegisterEnseignantComponent} from './register/register-enseignant/register-enseignant.component';
@@ -35,6 +35,9 @@ import {EmploisEtudiantComponent} from './etudiant/emplois-etudiant/emplois-etud
 import {UploadFilesComponent} from './administrateur/upload-files/upload-files.component';
 import {TraiterDemandeComponent} from './administrateur/traiter-demande/traiter-demande.component';
 import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
+// @ts-ignore
+import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {DemoNgZorroAntdModule} from './ng-zorro-antd.module';
 
 registerLocaleData(en);
 
@@ -59,6 +62,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     EmploisEtudiantComponent,
     UploadFilesComponent,
     TraiterDemandeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -71,9 +75,21 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzMenuModule,
     NzIconModule.forRoot(icons),
     NzSelectModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    DemoNgZorroAntdModule
   ],
-  providers: [authInterceptorProviders, { provide: NZ_I18N, useValue: en_US }],
+  exports: [BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    IconsProviderModule,
+    NzLayoutModule,
+    NzMenuModule,
+    NzSelectModule,
+    NgxExtendedPdfViewerModule,
+    DemoNgZorroAntdModule],
+  providers: [authInterceptorProviders, {provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

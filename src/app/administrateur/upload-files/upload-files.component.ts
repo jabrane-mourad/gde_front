@@ -42,7 +42,6 @@ export class UploadFilesComponent implements OnInit {
   ajouterCours(id: string): void {
     this.idCours = id;
     this.displayUpload = 'block';
-    console.log(this.idCours);
   }
 
   upload(): void {
@@ -50,7 +49,6 @@ export class UploadFilesComponent implements OnInit {
 
     // @ts-ignore
     this.currentFile = this.selectedFiles.item(0);
-    console.log(this.motCle);
     this.uploadService.upload(this.currentFile, this.motCle, this.idCours).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
@@ -85,7 +83,6 @@ export class UploadFilesComponent implements OnInit {
     this.listModule = [];
 
     this.api = this.apiMoules + 'nom=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
-    console.log(this.api);
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
         this.listModule = data.modules;

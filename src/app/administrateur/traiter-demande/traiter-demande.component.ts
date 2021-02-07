@@ -26,9 +26,7 @@ export class TraiterDemandeComponent implements OnInit {
   public getDemandes(): void {
     this.apiDemande = this.apiBase + 'typeDemande=' + this.typeDemande + '&etatDemande=' + this.etatDemande;
     this.http.get(this.apiDemande).subscribe(data => {
-        // @ts-ignore
         this.listDemande = data;
-        console.log(this.listDemande);
       }, error => {
         console.log(error);
       }

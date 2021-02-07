@@ -44,10 +44,6 @@ export class FaireDemandeEtudiantComponent implements OnInit {
   }
 
   public ajouterDemande(typeDemande: string, description: string, codeMasar: string): Observable<any> {
-    console.log(typeDemande);
-    console.log(description);
-    console.log(codeMasar);
-    console.log(this.API);
     return this.http.post(this.API, {typeDemande, description, codeMasar});
   }
 }

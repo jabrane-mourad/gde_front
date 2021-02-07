@@ -30,7 +30,6 @@ export class ListDemandeEtudiantComponent implements OnInit {
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
         this.listDemande = data.demandes;
-        console.log(this.listDemande);
       }, error => {
         console.log(error);
       }

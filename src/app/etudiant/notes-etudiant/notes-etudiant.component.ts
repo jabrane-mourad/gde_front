@@ -26,13 +26,10 @@ export class NotesEtudiantComponent implements OnInit {
   }
 
   public getNotes(): void {
-
     this.api = this.apiNotes + 'codeMasar=' + this.codeMasar + '&niveau=' + this.niveau;
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
         this.listNotes = data;
-        console.log(this.apiNotes);
-        console.log(this.listNotes);
       }, error => {
         console.log(error);
       }

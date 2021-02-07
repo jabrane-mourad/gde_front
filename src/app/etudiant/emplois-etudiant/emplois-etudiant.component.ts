@@ -34,8 +34,6 @@ export class EmploisEtudiantComponent implements OnInit {
     this.http.get(this.apiEmploi).subscribe(data => {
         // @ts-ignore
         this.emplois = data.emploi;
-        // this.emplois = this.sanitizer.bypassSecurityTrustResourceUrl(
-        // data.emploi.replace('view?usp=sharing', 'preview'));, private sanitizer: DomSanitizer
       }, error => {
         console.log(error);
       }

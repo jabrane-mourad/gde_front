@@ -1,14 +1,37 @@
 <div class="container container-fluid" style="padding: 20px 20px 20px 20px;">
 
   <form>
-    <div class="form-group">
-      <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
-        <nz-option nzValue="s1" nzLabel="Semestre S1"></nz-option>
-        <nz-option nzValue="s2" nzLabel="Semestre S2"></nz-option>
-      </nz-select>
+    <div class="form-group row">
+      <div class="col-6">
+        <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getModules()">
+          <nz-option nzValue="s1" nzLabel="Semestre S1"></nz-option>
+          <nz-option nzValue="s2" nzLabel="Semestre S2"></nz-option>
+        </nz-select>
+
+      </div>
+
+      <div class="col-6">
+        <nz-input-group nzSearch nzSize="default" [nzAddOnAfter]="suffixButton">
+
+          <input nz-input
+                 type="text"
+                 id="motCle"
+                 name="motCle"
+                 [(ngModel)]="motCle"
+                 style="text-align:center;"
+                 placeholder="Mot clé"
+                 required maxlength="20"
+                 #nom="ngModel"/>
+
+        </nz-input-group>
+        <ng-template #suffixButton>
+          <button nz-button nzType="primary" nzSize="large" nzSearch (click)="rechercher()">Search</button>
+        </ng-template>
+
+      </div>
+
     </div>
   </form>
-
 
 
   <table class="table table-striped">

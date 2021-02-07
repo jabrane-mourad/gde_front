@@ -29,10 +29,7 @@ export class AbsencesEtudiantComponent implements OnInit {
 
     this.api = this.apiabsences + 'codeMasar=' + this.codeMasar + '&niveau=' + this.niveau;
     this.http.get(this.api).subscribe(data => {
-        // @ts-ignore
         this.listabsences = data;
-        console.log(this.api);
-        console.log(this.listabsences);
       }, error => {
         console.log(error);
       }

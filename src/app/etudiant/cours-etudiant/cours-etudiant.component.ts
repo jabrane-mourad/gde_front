@@ -10,14 +10,16 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class CoursEtudiantComponent implements OnInit {
   apiMoules = 'http://localhost:8080/etudiants/modules?';
+  apiMoulesByMotCle = 'http://localhost:8080/etudiants/modulesByMotCle?';
   api = '';
   semestre = 's1';
   niveau = '';
   filiere = '';
-  public listModule: any;
+  listModule: any;
   pdfSrc = '';
   useBrowserLocale = true;
   displayCours = 'none';
+  motCle = '';
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private sanitizer: DomSanitizer) {
   }
@@ -32,12 +34,9 @@ export class CoursEtudiantComponent implements OnInit {
 
   public getModules(): void {
     this.displayCours = 'none';
-
     this.api = this.apiMoules + 'nom=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
-    console.log(this.api);
     this.http.get(this.api).subscribe(data => {
-        // @ts-ignore
-        this.listModule = data.modules;
+        this.listModule = data;
       }, error => {
         console.log(error);
       }
@@ -47,5 +46,17 @@ export class CoursEtudiantComponent implements OnInit {
   viewCours(url: string): void {
     this.displayCours = 'block';
     this.pdfSrc = url;
+  }
+
+  rechercher(): void {
+    this.displayCours = 'none';
+    this.api = this.apiMoulesByMotCle + 'nom=' + this.semestre + '&niveau=' + this.niveau
+      + '&filiere=' + this.filiere + '&motCle=' + this.motCle;
+    this.http.get(this.api).subscribe(data => {
+        this.listModule = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 }

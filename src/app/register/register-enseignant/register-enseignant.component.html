@@ -13,7 +13,7 @@
           <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="form.nom" required maxlength="20"
                  #nom="ngModel"/>
           <div class="alert-danger" *ngIf="nom.errors && f.submitted">
-            <div *ngIf="nom.errors.required">nom is required</div>
+            <div *ngIf="nom.errors.required">nom est requis!</div>
             <div *ngIf="nom.errors.minlength">nom must be at least 3 characters</div>
             <div *ngIf="nom.errors.maxlength">nom must be at most 20 characters</div>
           </div>
@@ -26,7 +26,7 @@
                  maxlength="20"
                  #prenom="ngModel"/>
           <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
-            <div *ngIf="prenom.errors.required">prenom is required</div>
+            <div *ngIf="prenom.errors.required">prenom est requis!</div>
             <div *ngIf="prenom.errors.minlength">prenom must be at least 3 characters</div>
             <div *ngIf="prenom.errors.maxlength">prenom must be at most 20 characters</div>
           </div>
@@ -41,7 +41,7 @@
                  required
                  max="2021-01-01" />
           <div class="alert-danger" *ngIf="dateNaissance.errors && f.submitted">
-            <div *ngIf="dateNaissance.errors">date de naissance is required</div>
+            <div *ngIf="dateNaissance.errors">date de naissance est requis!</div>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
           <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required email
                  #email="ngModel"/>
           <div class="alert-danger" *ngIf="email.errors && f.submitted">
-            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.required">Email est requis!</div>
             <div *ngIf="email.errors.email">
               Email must be a valid email address
             </div>
@@ -65,19 +65,19 @@
                  required maxlength="20"
                  #numeroSom="ngModel"/>
           <div class="alert-danger" *ngIf="numeroSom.errors && f.submitted">
-            <div *ngIf="numeroSom.errors.required">numeroSom is required</div>
+            <div *ngIf="numeroSom.errors.required">numeroSom est requis!</div>
             <div *ngIf="numeroSom.errors.minlength">numeroSom must be at least 3 characters</div>
             <div *ngIf="numeroSom.errors.maxlength">numeroSom must be at most 20 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Mot de pass</label>
+          <label for="password">Mot de passe</label>
           <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required
                  minlength="6" #password="ngModel"/>
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors.required">Mot de pass is required</div>
+            <div *ngIf="password.errors.required">Mot de passe is est requis!</div>
             <div *ngIf="password.errors.minlength">
-              Mot de pass must be at least 6 characters
+              Mot de passe must be at least 6 characters
             </div>
           </div>
         </div>

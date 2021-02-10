@@ -7,12 +7,6 @@
         <nz-option nzValue="ReleveDesNotes" nzLabel="Releve des notes"></nz-option>
         <nz-option nzValue="RetirerDiplome" nzLabel="Retirer un diplome"></nz-option>
       </nz-select>
-
-      <nz-select [(ngModel)]="etatDemande" name="etatDemande" (ngModelChange)="getDemandes()">
-        <nz-option nzValue="attente" nzLabel="attente"></nz-option>
-        <nz-option nzValue="rejetée" nzLabel="rejetée"></nz-option>
-        <nz-option nzValue="accepter" nzLabel="accepter"></nz-option>
-      </nz-select>
     </div>
   </form>
 
@@ -20,23 +14,23 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col"></th>
-      <th scope="col">nom , prenom</th>
-      <th scope="col">code masar</th>
-      <th scope="col">type demande</th>
-      <th scope="col">Description</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Code masar</th>
+      <th scope="col">Type demande</th>
       <th scope="col">Etat</th>
+      <th scope="col">Description</th>
       <th scope="col" colSpan="2" style="text-align: center">Action</th>
     </tr>
     </thead>
     <tbody>
 
-      <tr *ngFor = "let column of listDemande">
-        <th scope="row">1</th>
+      <tr *ngFor = "let column of listDemande ; let i = index">
+        <th scope="row">{{i+1}}</th>
         <td>{{column.etudiant.nom}}</td>
         <td>{{column.description}}</td>
         <td>{{column.typeDemande}}</td>
         <td>{{column.etat}}</td>
-        <td>{{column.justification}}</td>
+        <td>{{column.description}}</td>
         <td><button (click)="accepter(column.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Accepter</i></button></td>
         <td><button (click)="refuser(column.id)" class='btn btn-danger'><i class="fa fa-futboll-0">Refuser</i></button></td>
       </tr>
@@ -44,4 +38,19 @@
 
     </tbody>
   </table>
+</div>
+<div class="alert alert-light" role="alert" style="color: green">{{ message }}</div>
+<div class="container" style="display: {{displayJustificationInput}}">
+  <div>
+    <label >justification</label>
+    <textarea nz-input placeholder="justification" [nzAutosize]="{ minRows: 3, maxRows: 5 } " [(ngModel)]="justification" ></textarea>
+  </div>
+  <div>
+    <button class="btn btn-success"  (click)="valider()">
+      Valider
+    </button>
+  </div>
+
+
+
 </div>

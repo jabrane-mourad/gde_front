@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {DomSanitizer} from '@angular/platform-browser';
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Component({
   selector: 'app-traiter-demande',
@@ -9,11 +13,16 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./traiter-demande.component.css']
 })
 export class TraiterDemandeComponent implements OnInit {
-  apiBase = 'http://localhost:8080/adminisateur/demandes?';
+
+  apiBase = 'http://localhost:8080/adminisateur/demandes';
   apiDemande = '';
   typeDemande = 'ReleveDesNotes';
-  etatDemande = 'accepter';
   listDemande: any;
+  displayJustificationInput = 'none';
+  justification = '';
+  id = '';
+  displayMsg = false;
+  message = '';
 
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private sanitizer: DomSanitizer) {
@@ -24,7 +33,7 @@ export class TraiterDemandeComponent implements OnInit {
   }
 
   public getDemandes(): void {
-    this.apiDemande = this.apiBase + 'typeDemande=' + this.typeDemande + '&etatDemande=' + this.etatDemande;
+    this.apiDemande = this.apiBase + '?typeDemande=' + this.typeDemande;
     this.http.get(this.apiDemande).subscribe(data => {
         this.listDemande = data;
       }, error => {
@@ -33,11 +42,38 @@ export class TraiterDemandeComponent implements OnInit {
     );
   }
 
-  accepter(id: any): void {
 
+  public accepter(id: string): any {
+
+    this.http.post(`http://localhost:8080/adminisateur/demandes/accepter/${id}`, {}).subscribe(data => {
+        this.getDemandes();
+        this.message = 'la demande a été acceptée';
+        this.displayMsg = true;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   refuser(id: any): void {
+    this.id = id;
+    this.displayJustificationInput = 'block';
+
+  }
+
+  valider(): any {
+    console.log(this.id);
+    console.log(this.justification);
+    this.displayJustificationInput = 'none';
+    const id = this.id;
+    const justification = this.justification;
+    this.http.post(`http://localhost:8080/adminisateur/demandes/refuser?id=${id}&justification=${justification}`, {}).subscribe(data => {
+      this.getDemandes();
+      this.message = 'la demande a été refusée';
+      this.displayMsg = true;
+    }, error => {
+      console.log(error);
+    });
 
   }
 }

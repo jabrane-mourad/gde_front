@@ -46,8 +46,8 @@
     </thead>
     <tbody>
 
-    <tr *ngFor = "let column of listModule">
-      <th scope="row">1</th>
+    <tr *ngFor = "let column of listModule;let i=index">
+      <th scope="row">{{i+1}}</th>
       <td>{{column.nom}}</td>
       <td>{{column.enseignant.nom}}</td>
       <td><a href="{{column.source}}" target="_blank">suppot pdf</a></td>

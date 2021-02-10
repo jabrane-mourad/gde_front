@@ -14,8 +14,8 @@
     </thead>
     <tbody>
 
-    <tr *ngFor = "let column of listDemande">
-      <th scope="row">1</th>
+    <tr *ngFor = "let column of listDemande; let i = index">
+      <th scope="row">{{i+1}}</th>
       <td>{{column.typeDemande}}</td>
       <td>{{column.description}}</td>
       <td>{{column.etat}}</td>

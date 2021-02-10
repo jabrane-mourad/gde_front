@@ -5,7 +5,7 @@
       <label for="password">nom d'utilisateur :</label>
       <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
              #username="ngModel"/>
-      <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">nom d'utilisateur is required!
+      <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">nom d'utilisateur est requis!!
       </div>
     </div>
 
@@ -14,7 +14,7 @@
       <input id="password" type="password" class="form-control" name="password" [(ngModel)]="form.password"
              required minlength="6" #password="ngModel"/>
       <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-        <div *ngIf="password.errors.required">mot de passe is required</div>
+        <div *ngIf="password.errors.required">mot de passe est requis!</div>
         <div *ngIf="password.errors.minlength">mot de passe must be at least 6 characters</div>
       </div>
     </div>

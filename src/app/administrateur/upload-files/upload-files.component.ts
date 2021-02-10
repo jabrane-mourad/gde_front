@@ -18,11 +18,9 @@ export class UploadFilesComponent implements OnInit {
   progress = 0;
   message = '';
   motCle = '';
-
   // @ts-ignore
   fileInfos: Observable<any>;
   srcView = '';
-
   apiMoules = 'http://localhost:8080/etudiants/modules?';
   api = '';
   semestre = 's1';
@@ -68,6 +66,9 @@ export class UploadFilesComponent implements OnInit {
 
     // @ts-ignore
     this.selectedFiles = undefined;
+
+    this.displayUpload = 'none';
+
   }
 
   ngOnInit(): void {
@@ -85,7 +86,8 @@ export class UploadFilesComponent implements OnInit {
     this.api = this.apiMoules + 'nom=' + this.semestre + '&niveau=' + this.niveau + '&filiere=' + this.filiere;
     this.http.get(this.api).subscribe(data => {
         // @ts-ignore
-        this.listModule = data.modules;
+        this.listModule = data;
+        console.log(this.listModule);
       }, error => {
         console.log(error);
       }

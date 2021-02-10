@@ -1,12 +1,50 @@
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 center-block text-center">
-        <h1>Les emplois du temps du département informatique</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
+<div class="container container-fluid" style="padding: 20px 20px 20px 20px; width: 820px;">
+  <h1>Bienvenue</h1>
+
+  <form>
+    <div class="form-group row">
+      <label >Filiere : </label>
+      <nz-select [(ngModel)]="filiere" name="filiere" (ngModelChange)="getEmplois()">
+        <nz-option nzValue="GL" nzLabel="Génie logiciel"></nz-option>
+        <nz-option nzValue="GIID" nzLabel="Ingénierie des Données"></nz-option>
+      </nz-select>
     </div>
+    <div class="form-group row">
+      <label >Semestre : </label>
+      <nz-select [(ngModel)]="semestre" name="semestre" (ngModelChange)="getEmplois()">
+        <nz-option nzValue="S1" nzLabel="S1"></nz-option>
+        <nz-option nzValue="S2" nzLabel="S2"></nz-option>
+      </nz-select>
+    </div>
+
+  </form>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Semestre</th>
+      <th scope="col">Niveau</th>
+      <th scope="col">Telecharger</th>
+      <th scope="col">visualiser</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor = "let column of listEmploi,let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{column.nom}}</td>
+      <td>{{column.niveau}}</td>
+      <td><a href="{{column.emploi}}" target="_blank"> telecharger</a></td>
+      <td><button (click)="viewEploi(column.emploi)"><i nz-icon nzType="eye" nzTheme="outline"></i></button></td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+  <div style="width: 800px;display: {{display}}">
+    <ngx-extended-pdf-viewer [src]="pdfSrc" [useBrowserLocale]="useBrowserLocale"
+                             height="80vh"></ngx-extended-pdf-viewer>
   </div>
-</section>
+</div>

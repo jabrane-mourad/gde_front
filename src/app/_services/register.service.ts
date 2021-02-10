@@ -16,7 +16,7 @@ export class RegisterService {
   }
 
   registerEtudiant(type: string, nom: string, prenom: string, dateNaissance: string, email: string,
-                   codeMasar: string, niveau: string, password: string, role: string,filiere:string): Observable<any> {
+                   codeMasar: string, niveau: string, password: string, role: string, filiere: string): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       type,
       nom,
